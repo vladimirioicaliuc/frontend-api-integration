@@ -3,7 +3,7 @@ const fs = require('fs');
 const uuid = require('uuid');
 const cors = require('cors');
 
-const books = require('./books.json');
+let articles = require('./articles.json');
 
 const app = express();
 
@@ -13,29 +13,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-const updateBooksFile = (content) => (
-  fs.writeFile('./books.json', JSON.stringify(content, null, 2), (err) => {
+const updateArticlesFile = (content) => (
+  fs.writeFile('./articles.json', JSON.stringify(content, null, 2), (err) => {
     if (err) throw err;
-    console.log('Books file has been updated.');
+    console.log('Articles file has been updated.');
+    articles = content;
   })
 );
 
-app.get('/books', (req, res) => {
-  return res.json(books);
+app.get('/articles', (req, res) => {
+  return res.json(articles);
 });
 
-app.get('/books/:bookId', (req, res) => {
-  const { bookId } = req.params;
-  const book = books.find(b => b.id === bookId);
+app.get('/articles/:articleId', (req, res) => {
+  const { articleId } = req.params;
+  const article = articles.find(a => a.id === articleId);
 
-  if (!book) {
-    return res.status(404).send(`Book with ID ${bookId} not found.`);
+  if (!article) {
+    return res.status(404).send(`Article with ID ${articleId} not found.`);
   }
 
-  return res.json(book);
+  return res.json(article);
 });
 
-app.post('/books', (req, res) => {
+app.post('/articles', (req, res) => {
   const { author, title } = req.body;
 
   if (!author || typeof author !== 'string' || !title || typeof title !== 'string') {
@@ -43,24 +44,24 @@ app.post('/books', (req, res) => {
   }
 
   const id = uuid.v4();
-  const newBook = { id, author, title };
-  const newBooks = [...books, newBook];
+  const newArticle = { id, author, title };
+  const newArticles = [...articles, newArticle];
 
   try {
-    updateBooksFile(newBooks);
+    updateArticlesFile(newArticles);
   } catch (e) {
     return res.status(500).send('A server error occured.');
   }
 
-  return res.json(newBook);
+  return res.json(newArticle);
 });
 
-app.put('/books/:bookId', (req, res) => {
-  const { bookId } = req.params;
-  const index = books.findIndex(b => b.id === bookId);
+app.put('/articles/:articleId', (req, res) => {
+  const { articleId } = req.params;
+  const index = articles.findIndex(a => a.id === articleId);
 
   if (index < 0) {
-    return res.status(404).send(`Book with ID ${bookId} not found.`);
+    return res.status(404).send(`ARTICLE with ID ${articleId} not found.`);
   }
 
   const { author, title } = req.body;
@@ -69,37 +70,37 @@ app.put('/books/:bookId', (req, res) => {
     return res.status(400).send('Missing or invalid data.');
   }
 
-  const newBook = { ...books[index], author, title };
-  const newBooks = [...books];
-  newBooks.splice(index, 1, newBook);
+  const newArticle = { ...articles[index], author, title };
+  const newArticles = [...articles];
+  newArticles.splice(index, 1, newArticle);
 
   try {
-    updateBooksFile(newBooks);
+    updateArticlesFile(newArticles);
   } catch (e) {
     return res.status(500).send('A server error occured.');
   }
 
-  return res.json(newBook);
+  return res.json(newArticle);
 });
 
-app.delete('/books/:bookId', (req, res) => {
-  const { bookId } = req.params;
-  const index = books.findIndex(b => b.id === bookId);
+app.delete('/articles/:articleId', (req, res) => {
+  const { articleId } = req.params;
+  const index = articles.findIndex(a => a.id === articleId);
 
   if (index < 0) {
-    return res.status(404).send(`Book with ID ${bookId} not found.`);
+    return res.status(404).send(`Article with ID ${articleId} not found.`);
   }
 
-  const newBooks = [...books];
-  newBooks.splice(index, 1);
+  const newArticles = [...articles];
+  newArticles.splice(index, 1);
 
   try {
-    updateBooksFile(newBooks);
+    updateArticlesFile(newArticles);
   } catch (e) {
-    return res.status(500).send('A server error occured.');
+    return res.status(500).send('A server error occurred.');
   }
 
-  return res.send(`Book with ID ${bookId} was deleted.`);
+  return res.send(`Article with ID ${articleId} was deleted.`);
 });
 
 app.listen(PORT, () => console.log(`App running on port ${PORT}`));
