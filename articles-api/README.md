@@ -26,7 +26,7 @@ The Articles API will be accessible on [localhost:3000/articles](http://localhos
 
 Request body:
 ```
-{ "author": "Author name", "title": "Article title" }
+{ "price": 10, "title": "Article title", "imageUrl": "https://example.com" }
 ```
 
 ### Update article by ID
@@ -34,7 +34,7 @@ Request body:
 
 Request body:
 ```
-{ "author": "Author name", "title": "Article title" }
+{ "price": 10, "title": "Article title", "imageUrl": "https://example.com" }
 ```
 
 ### Delete article by ID

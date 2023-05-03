@@ -37,14 +37,14 @@ app.get('/articles/:articleId', (req, res) => {
 });
 
 app.post('/articles', (req, res) => {
-  const { author, title } = req.body;
+  const { price, title , imageUrl } = req.body;
 
-  if (!author || typeof author !== 'string' || !title || typeof title !== 'string') {
+  if (!price || typeof price !== 'number' || !title || typeof title !== 'string'|| !imageUrl || typeof imageUrl !== 'string') {
     return res.status(400).send('Missing or invalid data.');
   }
 
   const id = uuid.v4();
-  const newArticle = { id, author, title };
+  const newArticle = { id, price, title, imageUrl };
   const newArticles = [...articles, newArticle];
 
   try {
@@ -64,13 +64,13 @@ app.put('/articles/:articleId', (req, res) => {
     return res.status(404).send(`ARTICLE with ID ${articleId} not found.`);
   }
 
-  const { author, title } = req.body;
+  const { price, title, imageUrl } = req.body;
 
-  if (!author || typeof author !== 'string' || !title || typeof title !== 'string') {
+  if (!imageUrl || typeof imageUrl !== 'string' || !price || typeof price !== 'number' || !title || typeof title !== 'string') {
     return res.status(400).send('Missing or invalid data.');
   }
 
-  const newArticle = { ...articles[index], author, title };
+  const newArticle = { ...articles[index], price, imageUrl, title };
   const newArticles = [...articles];
   newArticles.splice(index, 1, newArticle);
 
