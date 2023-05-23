@@ -1,0 +1,24 @@
+.products {
+  .products__search {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      width: 280px;
+    }
+  }
+
+  .products__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .products__load-more {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+}

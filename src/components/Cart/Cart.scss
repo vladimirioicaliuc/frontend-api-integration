@@ -1,0 +1,11 @@
+.cart {
+  .cart__total {
+    border-top: 1px solid;
+    margin-top: 12px;
+    padding: 12px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+  }
+}

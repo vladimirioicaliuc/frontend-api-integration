@@ -1,0 +1,24 @@
+.cart-item {
+  display: flex;
+  justify-content: flex-start;
+
+  .cart-item__information {
+    margin-left: 12px;
+    flex: 1;
+
+    .bold {
+      font-weight: 700;
+    }
+
+    .cart-item__information__quantity {
+      font-size: 12px;
+    }
+
+    .cart-item__information__actions {
+      text-align: right;
+      font-size: 12px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

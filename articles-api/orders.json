@@ -1,0 +1,32 @@
+[
+  {
+    "orderId": "22aa8a5d-c97d-4351-b7a9-7c464fb6c27f",
+    "data": {
+      "customer": {
+        "firstName": "asddas",
+        "lastName": "adasd",
+        "email": "asdas@asdas.com",
+        "address": "asdasd"
+      },
+      "order": []
+    }
+  },
+  {
+    "orderId": "1a590719-d405-4238-9b6d-10a059d448c7",
+    "data": {
+      "customer": {
+        "firstName": "asdas",
+        "lastName": "asdasdsa",
+        "email": "asdas@sadas.com",
+        "address": "asdasdas"
+      },
+      "order": [
+        {
+          "itemId": "fab81b55-6b28-4085-909a-b0163a2a5bb1",
+          "quantity": 3,
+          "pricePerItem": 20
+        }
+      ]
+    }
+  }
+]
