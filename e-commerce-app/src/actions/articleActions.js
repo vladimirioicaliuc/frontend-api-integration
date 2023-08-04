@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_ARTICLES_SUCCESS } from './actionTypes';
+import { FETCH_ARTICLES_SUCCESS, TOGGLE_FAVORITE } from './actionTypes';
 
 const fetchArticlesSuccess = (articles) => {
   return {
@@ -21,3 +21,11 @@ export const fetchArticles = () => {
       });
   };
 };
+
+export const toggleFavorite = (articles) => {
+  return {
+    type: TOGGLE_FAVORITE,
+    payload: articles,
+  };
+};
+

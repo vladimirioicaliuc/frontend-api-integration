@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../actions/actionTypes';
+import { ADD_TO_CART, SUBMIT_CART, REMOVE_FROM_CART} from '../actions/actionTypes';
 
 const initialState = [];
 
@@ -17,7 +17,10 @@ const cartReducer = (state = initialState, action) => {
         // If the item doesn't exist in the cart, add it as a new item
         return [...state, { id, name, price, quantity }];
       }
-
+      case REMOVE_FROM_CART:
+        const itemIdToRemove = action.payload;
+        return state.filter((item) => item.id !== itemIdToRemove);
+      case SUBMIT_CART:
     default:
       return state;
   }

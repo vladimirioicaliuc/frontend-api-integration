@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../actions/cartActions";
+import { toggleFavorite } from "../actions/articleActions";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -15,12 +16,13 @@ const ArticleCard = ({ article }) => {
   const [showButtons, setShowButtons] = useState(false);
 
   const handleAddToCart = () => {
-    dispatch(addToCart(article.id));
+    dispatch(addToCart(article));
   };
 
   const handleAddToLiked = () => {
-    // dispatch(addToLiked(article.id));
+    dispatch(toggleFavorite(article.id));
   };
+  console.log('article', article);
 
   return (
     <Card
@@ -47,7 +49,7 @@ const ArticleCard = ({ article }) => {
         <Button
           className="add-to-favorites-button"
           sx={{ position: "absolute" }}
-          color="secondary"
+          color={article.favorite ? "secondary" : "primary"}
           aria-label="add to favorites"
           onClick={handleAddToLiked}
         >

@@ -1,5 +1,5 @@
-// import React from 'react';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -14,6 +14,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import SearchIcon from "@mui/icons-material/Search";
+import LocalGroceryStoreOutlinedIcon from "@mui/icons-material/LocalGroceryStoreOutlined";
+import Badge from "@mui/material/Badge";
 
 const pages = [
   { title: "Home", link: "/" },
@@ -24,6 +27,8 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Navigation() {
   const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -45,8 +50,9 @@ function Navigation() {
   const handleNavMenuClick = (destination) => {
     navigate(destination);
     setAnchorElNav(null);
-
   };
+
+  const handleOpenSerachMenu = () => {};
 
   return (
     <AppBar position="static">
@@ -144,6 +150,19 @@ function Navigation() {
               </Button>
             ))}
           </Box>
+
+          <Tooltip title="Search">
+            <SearchIcon
+              onClick={handleOpenSerachMenu}
+              sx={{ mr: 2 }}
+            ></SearchIcon>
+          </Tooltip>
+
+          <Badge badgeContent={cart.length} variant="soft" max={9} sx={{ mr: 2 }}>
+            <LocalGroceryStoreOutlinedIcon
+              onClick={handleOpenSerachMenu}
+            ></LocalGroceryStoreOutlinedIcon>
+          </Badge>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
