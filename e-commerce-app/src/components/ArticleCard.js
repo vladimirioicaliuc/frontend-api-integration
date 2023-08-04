@@ -1,28 +1,71 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../actions/cartActions';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../actions/cartActions";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Button } from "@mui/material";
+import "./ArticleCard.css";
 
 const ArticleCard = ({ article }) => {
   const dispatch = useDispatch();
+  const [showButtons, setShowButtons] = useState(false);
 
   const handleAddToCart = () => {
-    dispatch(addToCart(article));
+    dispatch(addToCart(article.id));
+  };
+
+  const handleAddToLiked = () => {
+    // dispatch(addToLiked(article.id));
   };
 
   return (
-    <div className="article-card">
-      <img src={article.image} alt={article.name} />
-      <div className="article-details">
-        <h3>{article.name}</h3>
-        <p>Price: ${article.price}</p>
-      </div>
-      <div className="article-buttons">
-        <button className="add-to-cart-button" onClick={handleAddToCart}>
-          Add to Cart
-        </button>
-        <button className="like-button">Like</button>
-      </div>
-    </div>
+    <Card
+      sx={{ width: 260, margin: 2 }}
+      className="article-card"
+      onMouseEnter={() => setShowButtons(true)}
+      onMouseLeave={() => setShowButtons(false)}
+    >
+      <CardMedia
+        component="img"
+        height="400"
+        image={article.imageUrl}
+        alt="Paella dish"
+      />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          {article.title}
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+          ${article.price}
+        </Typography>
+      </CardContent>
+      {showButtons && (
+        <Button
+          className="add-to-favorites-button"
+          sx={{ position: "absolute" }}
+          color="secondary"
+          aria-label="add to favorites"
+          onClick={handleAddToLiked}
+        >
+          <FavoriteIcon size="large" edge="end" />
+        </Button>
+      )}
+      {showButtons && (
+        <Button
+          className="add-to-cart-button"
+          variant="contained"
+          sx={{ position: "absolute" }}
+          onClick={handleAddToCart}
+          startIcon={<AddShoppingCartIcon />}
+        >
+          Add to cart
+        </Button>
+      )}
+    </Card>
   );
 };
 

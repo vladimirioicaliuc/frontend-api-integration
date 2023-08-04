@@ -16,8 +16,8 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Navigation />
+        <AppRoutes />
       </BrowserRouter>
-      <AppRoutes />
     </div>
   );
 };

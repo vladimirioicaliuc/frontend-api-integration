@@ -1,0 +1,14 @@
+.article-card {
+    position: relative;
+
+}
+.add-to-favorites-button {
+    bottom: 43px; 
+    right: 0px;
+    min-width: none !important;
+}
+
+.add-to-cart-button {
+    bottom: 20%;
+    left: 55px;
+}
