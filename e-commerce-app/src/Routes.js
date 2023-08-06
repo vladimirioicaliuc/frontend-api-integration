@@ -6,7 +6,6 @@ import Contact from "./components/Pages/Contact";
 import ShoppingCart from "./components/Pages/ShoppingCart";
 
 const AppRoutes = () => {
-  console.log("contacts", Contact);
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />

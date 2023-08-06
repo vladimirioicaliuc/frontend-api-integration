@@ -11,7 +11,7 @@ const fetchArticlesSuccess = (articles) => {
 export const fetchArticles = () => {
   return (dispatch) => {
     axios
-      .get('http://localhost:3000/articles')
+      .get('http://localhost:3000/articles2')
       .then((response) => {
         dispatch(fetchArticlesSuccess(response.data));
       })

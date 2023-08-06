@@ -22,7 +22,6 @@ const ArticleCard = ({ article }) => {
   const handleAddToLiked = () => {
     dispatch(toggleFavorite(article.id));
   };
-  console.log('article', article);
 
   return (
     <Card
@@ -34,7 +33,7 @@ const ArticleCard = ({ article }) => {
       <CardMedia
         component="img"
         height="400"
-        image={article.imageUrl}
+        image={article.imageUrl || article.imageurl}
         alt="Paella dish"
       />
       <CardContent>

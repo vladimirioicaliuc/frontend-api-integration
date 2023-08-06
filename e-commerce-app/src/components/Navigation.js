@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import * as React from "react";
+import CartComponent from "./CartComponent";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -28,9 +29,11 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function Navigation() {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+  const cartJSON = JSON.stringify(cart);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [showCart, setShowCart] = React.useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -158,7 +161,13 @@ function Navigation() {
             ></SearchIcon>
           </Tooltip>
 
-          <Badge badgeContent={cart.length} variant="soft" max={9} sx={{ mr: 2 }}>
+          <Badge
+            badgeContent={cart.length}
+            variant="soft"
+            max={9}
+            sx={{ mr: 2 }}
+            onClick={() => setShowCart(!showCart)}
+          >
             <LocalGroceryStoreOutlinedIcon
               onClick={handleOpenSerachMenu}
             ></LocalGroceryStoreOutlinedIcon>
@@ -195,6 +204,7 @@ function Navigation() {
           </Box>
         </Toolbar>
       </Container>
+      {showCart && <cart-component cart-items={cartJSON}/>}
     </AppBar>
   );
 }
