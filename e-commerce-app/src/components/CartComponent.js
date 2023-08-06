@@ -21,7 +21,7 @@ class CartComponent extends HTMLElement {
             <h2>Cart Items</h2>
             <ul>
               ${cartItems
-                .map((item) => `<li>${item.name} - $${item.price}</li>`)
+                .map((item) => `<li>${item.name} - ${item.quantity} * $${item.price}</li>`)
                 .join("")}
             </ul>
           </div>
