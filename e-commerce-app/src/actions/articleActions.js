@@ -1,5 +1,11 @@
-import axios from 'axios';
-import { FETCH_ARTICLES_SUCCESS, TOGGLE_FAVORITE } from './actionTypes';
+import axios from "axios";
+import { FETCH_ARTICLES_SUCCESS, TOGGLE_FAVORITE } from "./actionTypes";
+
+const RunWithCassandra = false;
+
+const articlesPath = RunWithCassandra
+  ? "http://localhost:3000/articles2"
+  : "http://localhost:3000/articles";
 
 const fetchArticlesSuccess = (articles) => {
   return {
@@ -11,13 +17,13 @@ const fetchArticlesSuccess = (articles) => {
 export const fetchArticles = () => {
   return (dispatch) => {
     axios
-      .get('http://localhost:3000/articles2')
+      .get(articlesPath)
       .then((response) => {
         dispatch(fetchArticlesSuccess(response.data));
       })
       .catch((error) => {
         // Handle error if necessary
-        console.error('Error fetching articles:', error);
+        console.error("Error fetching articles:", error);
       });
   };
 };
@@ -28,4 +34,3 @@ export const toggleFavorite = (articles) => {
     payload: articles,
   };
 };
-
