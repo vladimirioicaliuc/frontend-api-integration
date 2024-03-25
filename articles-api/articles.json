@@ -8,7 +8,7 @@
   {
     "id": "fab81b55-6b28-4085-909a-b0163a2a5bb1",
     "title": "Mindset",
-    "price": 20,
+    "price": 30,
     "imageUrl": "https://cdn.dc5.ro/img-prod/1977077-0.jpeg"
   },
   {
@@ -19,7 +19,7 @@
   },
   {
     "id": "5ff295cc-e79d-4931-9584-e2e49101d6df",
-    "price": 15,
+    "price": 30,
     "title": "Men relaxed T Shirt",
     "imageUrl": "https://i.factcool.com/catalog/products/6/f2/ca6-f2-ca4a979520221014070308_8682582967425_1.jpg"
   },
@@ -42,9 +42,9 @@
     "imageUrl": "https://horsefeathers.b-cdn.net/data/tmp/0/7/97087_0.jpg?1674151865_1"
   },
   {
-    "id": "5f96be1e-14e7-4c09-ad0c-6020d8aa80ae",
-    "price": 90,
-    "title": "Bagsure Travel Laptop Backpack",
-    "imageUrl": "https://m.media-amazon.com/images/I/81FN7KwPcGL._AC_SL1500_.jpg"
+    "id": "1f60b076-5cf4-4fc5-a7a6-aa63f49ba657",
+    "price": 50,
+    "title": "The Power of Habit",
+    "imageUrl": "https://libris.to/media/jacket/09188414_power-of-habit.jpg"
   }
 ]

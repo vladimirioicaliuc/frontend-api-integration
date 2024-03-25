@@ -10,6 +10,12 @@ cd articles-api
 npm install
 node index.js
 ```
+After installing dependencies we can run the project:
+
+## Useful commands
+
+* `npm run dev`         start frontend and backend, run application
+
 
 The Articles API will be accessible on [localhost:3000/articles](http://localhost:3000/articles).
 
@@ -40,7 +46,3 @@ Request body:
 ### Delete article by ID
 *DELETE /articles/:articleId*
 
-## Useful commands
-
-* `npm run dev`         start frontend and backend, run application
-* `npm run test`        perform the jest unit tests
