@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+    html{
+      @apply font-poppins;
+    }
+}
+
+:root {
+    --border:#636A7F;
+    --border-secondary:#fff;
+    --text:#fff;
+    --main-background: #081234;
+    --secondary-background: #fff;
+    --button: #3E84F7;
+    --button-hover: #3570D2;
+    --link-hover:#343D59;
+    --error: #F55944;
+}
