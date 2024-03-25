@@ -7,7 +7,7 @@ let articles = require('./articles.json');
 
 const app = express();
 
-const PORT = 3000;
+const PORT = 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -34,6 +34,14 @@ app.get('/articles/:articleId', (req, res) => {
   }
 
   return res.json(article);
+});
+
+app.get('/searchArticles/:input', (req, res) => {
+  const { input } = req.params;
+  const filtered = articles.filter((item) =>
+    item.title.toLowerCase().includes(input.toLowerCase())
+  );
+  return res.json(filtered);
 });
 
 app.post('/articles', (req, res) => {
