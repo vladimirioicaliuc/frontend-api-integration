@@ -39,3 +39,8 @@ Request body:
 
 ### Delete article by ID
 *DELETE /articles/:articleId*
+
+## Useful commands
+
+* `npm run dev`         start frontend and backend, run application
+* `npm run test`        perform the jest unit tests
